@@ -3,20 +3,13 @@ extends layout
 block content
   h1 Fossils Search Results
 
-  // Add the hardcoded results array
-  - const results = [
-      { fossil_name: 'Trilobite', age: 500, location: 'Utah' },
-      { fossil_name: 'Ammonite', age: 200, location: 'Morocco' },
-      { fossil_name: 'Megalodon Tooth', age: 15, location: 'California' }
-    ];
-
-  // Outer container
+  // Outer container for the fossils
   div.container-fluid
     // Row for grid layout
     div.row
-      // Iterate over each fossil in results
-      - each fossil in results
-        div.col-sm-2
-          h3 #{fossil.fossil_name}
+      // Loop through each fossil in the fossils array
+      each fossil in fossils
+        div.col-sm-4
+          h3 #{fossil.name}
           p Age: #{fossil.age} million years
           p Location: #{fossil.location}

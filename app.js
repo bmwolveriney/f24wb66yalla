@@ -20,6 +20,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Define the route for fossils
+app.get('/fossils', (req, res) => {
+  const fossils = [
+    { name: 'Trilobite', age: 500, location: 'Utah' },
+    { name: 'Ammonite', age: 200, location: 'Morocco' },
+    { name: 'Megalodon Tooth', age: 15, location: 'California' }
+  ];
+  // Render the 'fossils' view, passing the fossils data
+  res.render('fossils', { fossils });
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
