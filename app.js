@@ -26,7 +26,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/fossils', fossilsRouter);
 app.use('/grid', gridRouter); // Added the grid route
-app.use('/randomitem', pickRouter); // Added the randomitem route
+app.use('/randomitem', pickRouter); // Added the randomitem route for the random item selection page
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
