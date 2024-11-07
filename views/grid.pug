@@ -2,4 +2,31 @@ extends layout
 
 block content
   h1 Grid Display
+
+  // Show the query values for rows and columns
   p Rows: #{query.rows}, Columns: #{query.cols}
+
+  // Convert rows and cols to numbers
+  - var rows = Number(query.rows)
+  - var cols = Number(query.cols)
+
+  // Check if rows and cols are integers
+  - if (!Number.isInteger(rows) || !Number.isInteger(cols))
+    p Invalid input! Rows and columns must be integers.
+
+  // Check if rows or cols are out of range
+  - else if (rows < 3 || rows > 13)
+    p Rows must be between 3 and 13.
+
+  - else if (cols < 3 || cols > 13)
+    p Columns must be between 3 and 13.
+
+  // Valid input, create the grid
+  - else
+    table#outer
+      // Loop through rows
+      - for (var i = 0; i < rows; i++)
+        tr#middle
+          // Loop through columns
+          - for (var j = 0; j < cols; j++)
+            td= i * i + j
