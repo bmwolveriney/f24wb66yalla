@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var fossilsRouter = require('./routes/fossils');
+var gridRouter = require('./routes/grid');  // Added the grid route
 
 var app = express();
 
@@ -20,20 +21,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Define the route for fossils
-app.get('/fossils', (req, res) => {
-  const fossils = [
-    { name: 'Trilobite', age: 500, location: 'Utah' },
-    { name: 'Ammonite', age: 200, location: 'Morocco' },
-    { name: 'Megalodon Tooth', age: 15, location: 'California' }
-  ];
-  // Render the 'fossils' view, passing the fossils data
-  res.render('fossils', { fossils });
-});
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/fossils', fossilsRouter);
+app.use('/grid', gridRouter); // Added the grid route
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
